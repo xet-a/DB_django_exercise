@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>2022 DB Assignment#2</title>
+</head>
+<body>
+<br>
+<h2>Hardware DB SQL Query</h2>
+<div>
+    <button type="button" onclick="location.href='create/'">Create Table</button>
+    <button type="button" onclick="location.href='insert/'">Insert Data</button>
+    <button type="button" onclick="location.href='query1/'">Query1</button>
+    <button type="button" onclick="location.href='query2/'">Query2</button>
+    <button type="button" onclick="location.href='query3/'">Query3</button>
+    <button type="button" onclick="location.href='query4/'">Query4</button>
+</div>
+<br>
+<br>
+{% if view == 0 %}
+    <div>
+        <table class="table">
+            <caption>Records of Products</caption>
+            <thead>
+                <tr>
+                    <th>MAKER</th>
+                    <th>MODEL</th>
+                    <th>TYPE</th>
+                </tr>
+            </thead>
+            {% for i in productList %}
+            <tr>
+                <td>{{ i.maker }}</td>
+                <td>{{ i.model }}</td>
+                <td>{{ i.type }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table class="table">
+            <caption>Records of PC</caption>
+            <thead>
+                <tr>
+                    <th>MODEL</th>
+                    <th>SPEED</th>
+                    <th>RAM</th>
+                    <th>HD</th>
+                    <th>PRICE</th>
+                </tr>
+            </thead>
+            {% for i in pcList %}
+            <tr>
+                <td>{{ i.model }}</td>
+                <td>{{ i.speed }}</td>
+                <td>{{ i.ram }}</td>
+                <td>{{ i.hd }}</td>
+                <td>{{ i.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table class="table">
+            <caption>Records of Laptop</caption>
+            <thead>
+                <tr>
+                    <th>MODEL</th>
+                    <th>SPEED</th>
+                    <th>RAM</th>
+                    <th>HD</th>
+                    <th>SCREEN</th>
+                    <th>PRICE</th>
+                </tr>
+            </thead>
+            {% for r in laptopList %}
+            <tr>
+                <td>{{ r.model }}</td>
+                <td>{{ r.speed }}</td>
+                <td>{{ r.ram }}</td>
+                <td>{{ r.hd }}</td>
+                <td>{{ r.screen }}</td>
+                <td>{{ r.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table class="table">
+            <caption>Records of Printer</caption>
+            <thead>
+                <tr>
+                    <th>MODEL</th>
+                    <th>COLOR</th>
+                    <th>TYPE</th>
+                    <th>PRICE</th>
+                </tr>
+            </thead>
+            {% for i in printerList %}
+            <tr>
+                <td>{{ i.model }}</td>
+                <td>{{ i.color }}</td>
+                <td>{{ i.type }}</td>
+                <td>{{ i.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endif %}
+</body>
+</html>

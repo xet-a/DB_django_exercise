@@ -18,5 +18,11 @@ from django.urls import path
 from myApp import views
 
 urlpatterns = [
-    path('', views.display, name='index'),
+    path('', views.main, name='main'),
+    path('create/', views.create, name='create'),
+    path('insert/', views.insert, name='insert'),
+    path('query1/', views.query1, name='query1'),
+    path('query2/', views.query2, name='query2'),
+    path('query3/', views.query3, name='query3'),
+    path('query4/', views.query4, name='query4'),
 ]

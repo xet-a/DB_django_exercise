@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hardware - Query1:</title>
+</head>
+<body>
+<a href="http://localhost:8000/"><button>MAIN</button></a><br>
+<h2>The price of laptop, which is the only laptop model of the maker</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Laptop model | </th>
+            <th>price </th>
+        </tr>
+    </thead>
+{% for i in out %}
+    <tr>
+        <td>{{ i.model }}</td>
+        <td>{{ i.price }}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>

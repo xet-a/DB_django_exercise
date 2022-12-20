@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hardware - Query1:</title>
+</head>
+<body>
+<a href="http://localhost:8000/"><button>MAIN</button></a><br>
+<h2>The model and price of the printer of the highest price of each maker</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Product maker | </th>
+            <th>price | </th>
+            <th>Printer model</th>
+        </tr>
+    </thead>
+{% for i in out %}
+    <tr>
+        <td>{{ i.maker }}</td>
+        <td>{{ i.price }}</td>
+        <td>{{ i.model }}</td>
+    </tr>
+{% endfor %}
+</table>
+</table>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hardware - Query1:</title>
+</head>
+<body>
+<a href="http://localhost:8000/"><button>MAIN</button></a><br>
+<h2>The average speed of laptop for each maker</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Product maker | </th>
+            <th>Number of products | </th>
+            <th>Average speed of laptop</th>
+        </tr>
+    </thead>
+{% for i in out %}
+    <tr>
+        <td>{{ i.maker }}</td>
+        <td>{{ i.num }}</td>
+        <td>{{ i.avg }}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
