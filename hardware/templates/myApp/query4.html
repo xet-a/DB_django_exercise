@@ -1,17 +1,26 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Hardware - Query1:</title>
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+    <style>
+        th {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
-<a href="http://localhost:8000/"><button>MAIN</button></a><br>
-<h2>The model and price of the printer of the highest price of each maker</h2>
-<table>
+<body><br>
+<button type="button" class="btn btn-default" onclick="location.href='http://localhost:8000/'">Back To MAIN</button>
+<h4 style="text-align: center;">Q4</h4>
+<h4 style="text-align: center;">The model and price of the printer<br>of the highest price of each maker</h4>
+<table class="table table-hover" style="width: 350px; margin: auto; text-align: center;">
     <thead>
         <tr>
-            <th>Product maker | </th>
-            <th>price | </th>
+            <th>Product maker</th>
+            <th>price</th>
             <th>Printer model</th>
         </tr>
     </thead>

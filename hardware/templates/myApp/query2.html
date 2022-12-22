@@ -1,17 +1,26 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Hardware - Query1:</title>
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+    <style>
+        th {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
-<a href="http://localhost:8000/"><button>MAIN</button></a><br>
-<h2>The average speed of laptop for each maker</h2>
-<table>
+<body><br>
+<button type="button" class="btn btn-default" onclick="location.href='http://localhost:8000/'">Back To MAIN</button>
+<h3 style="text-align: center;">Q2</h3>
+<h3 style="text-align: center;">The average speed of laptop for each maker</h3>
+<table class="table table-hover" style="width: 600px; margin: auto; text-align: center;">
     <thead>
         <tr>
-            <th>Product maker | </th>
-            <th>Number of products | </th>
+            <th>Product maker</th>
+            <th>Number of products</th>
             <th>Average speed of laptop</th>
         </tr>
     </thead>

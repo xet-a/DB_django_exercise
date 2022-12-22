@@ -2,49 +2,60 @@ from django.shortcuts import render
 from django.db import connection
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+import re
 
 # select * from tables
 def main(request):
     view = 0
     productList = []; pcList = []; laptopList = []; printerList = [];
     with connection.cursor() as cursor:
-        productSel = "SELECT * FROM product"
-        cursor.execute(productSel)
-        fetchResultProduct = cursor.fetchall()
+        try:
+            productSel = "SELECT * FROM product"
+            cursor.execute(productSel)
+            fetchResultProduct = cursor.fetchall()
 
-        pcSel = "SELECT * FROM pc"
-        cursor.execute(pcSel)
-        fetchResultPc = cursor.fetchall()
+            pcSel = "SELECT * FROM pc"
+            cursor.execute(pcSel)
+            fetchResultPc = cursor.fetchall()
 
-        laptopSel = "SELECT * FROM laptop"
-        cursor.execute(laptopSel)
-        fetchResultLaptop = cursor.fetchall()
+            laptopSel = "SELECT * FROM laptop"
+            cursor.execute(laptopSel)
+            fetchResultLaptop = cursor.fetchall()
 
-        printerSel = "SELECT * FROM printer"
-        cursor.execute(printerSel)
-        fetchResultPrinter = cursor.fetchall()
+            printerSel = "SELECT * FROM printer"
+            cursor.execute(printerSel)
+            fetchResultPrinter = cursor.fetchall()
 
-        connection.commit()
-        connection.close()
+            connection.commit()
+            connection.close()
 
-        for tmp in fetchResultProduct:
-            eachRow = {'maker': tmp[0], 'model': tmp[1], 'type': tmp[2]}
-            productList.append(eachRow)
+            for tmp in fetchResultProduct:
+                eachRow = {'maker': tmp[0], 'model': tmp[1], 'type': tmp[2]}
+                productList.append(eachRow)
 
-        for temp in fetchResultPc:
-            eachRow = {'model': temp[0], 'speed': temp[1], 'ram': temp[2], 'hd': temp[3], 'price': temp[4], 'maker': temp[5]}
-            pcList.append(eachRow)
+            for temp in fetchResultPc:
+                eachRow = {'model': temp[0], 'speed': temp[1], 'ram': temp[2], 'hd': temp[3], 'price': temp[4]}
+                pcList.append(eachRow)
 
-        for temp in fetchResultLaptop:
-            eachRow = {'model': temp[0], 'speed': temp[1], 'ram': temp[2], 'hd': temp[3], 'screen': temp[4], 'price': temp[5], 'maker': temp[6]}
-            laptopList.append(eachRow)
+            for temp in fetchResultLaptop:
+                eachRow = {'model': temp[0], 'speed': temp[1], 'ram': temp[2], 'hd': temp[3], 'screen': temp[4], 'price': temp[5]}
+                laptopList.append(eachRow)
 
-        for temp in fetchResultPrinter:
-            eachRow = {'model': temp[0], 'color': temp[1], 'type': temp[2], 'price': temp[3], 'maker': temp[4]}
-            printerList.append(eachRow)
+            for temp in fetchResultPrinter:
+                eachRow = {'model': temp[0], 'color': temp[1], 'type': temp[2], 'price': temp[3]}
+                printerList.append(eachRow)
+
+        except:
+            view = 1
 
     return render(request, 'myApp/main.html',\
     {"view": view, "productList": productList, "pcList": pcList, "laptopList": laptopList, "printerList": printerList})
+
+def reset(request):
+    with connection.cursor() as cursor:
+        deleteSQL = "DROP TABLE product, pc, laptop, printer;"
+        cursor.execute(deleteSQL)
+    return HttpResponseRedirect(reverse('main'))
 
 # create table
 def create(request):
@@ -134,7 +145,9 @@ def query1(request):
         cursor.execute(sqlQuery1)
         fetchResultQuery = cursor.fetchall()
     
-    return render(request, 'myApp/query1.html', {"out": fetchResultQuery})
+    f = re.findall("\d+.\d+", str(fetchResultQuery))
+    
+    return render(request, 'myApp/query1.html', {"out": f})
 
 def query2(request):
     outputOfQuery = [];
@@ -156,7 +169,7 @@ def query2(request):
         eachRow = {'maker': temp[0], 'num': temp[1], 'avg': temp[2]}
         outputOfQuery.append(eachRow)
     
-    return render(request, 'myApp/query3.html', {"out": outputOfQuery})
+    return render(request, 'myApp/query2.html', {"out": outputOfQuery})
 
 def query3(request):
     outputOfQuery = [];

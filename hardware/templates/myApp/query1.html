@@ -1,11 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Hardware - Query1:</title>
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
 </head>
-<body>
-<a href="http://localhost:8000/"><button>MAIN</button></a><br>
-<h2>The average hard disk size of PCs : {{ out }}</h2>
+<body><br>
+<button type="button" class="btn btn-default" onclick="location.href='http://localhost:8000/'">Back To MAIN</button>
+<h3 style="text-align: center;">Q1</h3>
+<h3 style="text-align: center;">The average hard disk size of PCs : {{ out }}</h3>
 </body>
 </html>

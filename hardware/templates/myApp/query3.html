@@ -1,16 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Hardware - Query1:</title>
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
+    <style>
+        th {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
-<a href="http://localhost:8000/"><button>MAIN</button></a><br>
-<h2>The price of laptop, which is the only laptop model of the maker</h2>
-<table>
+<body><br>
+<button type="button" class="btn btn-default" onclick="location.href='http://localhost:8000/'">Back To MAIN</button>
+<h4 style="text-align: center;">Q3</h4>
+<h4 style="text-align: center;">The price of laptop, <br>which is the only laptop model of the maker</h4>
+<table class="table table-hover" style="width: 250px; margin: auto; text-align: center;">
     <thead>
         <tr>
-            <th>Laptop model | </th>
+            <th>Laptop model</th>
             <th>price </th>
         </tr>
     </thead>
